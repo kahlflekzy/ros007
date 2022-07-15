@@ -1,0 +1,12 @@
+<launch>
+    <arg name="package" value="$(find behavior_tree_navigation_v3)"/>
+    <arg name="map_file" default="$(arg package)/data/map.yaml"/>
+    <arg name="init_pose_file" default="$(arg package)/data/init_pose_22_06_17_15_20_09.dat"/>
+    <!-- behavior_tree_navigation_v3   -->
+    <node pkg="behavior_tree_navigation_v3" name="map_server_node" type="map_server_node.py" args="$(arg map_file)" output="screen"/>
+    <node pkg="behavior_tree_navigation_v3" name="localization_node" type="localization_node.py" args="$(arg init_pose_file)" output="screen"/>
+    <node pkg="behavior_tree_navigation_v3" name="task_listener_node" type="task_listener_node.py" output="screen"/>
+    <node pkg="behavior_tree_navigation_v3" name="execute_task_node" type="execute_task_node.py" output="screen"/>
+    <node pkg="behavior_tree_navigation_v3" name="move_to_base_node" type="move_to_base_node.py" output="screen"/>
+    <node pkg="behavior_tree_navigation_v3" name="behaviortree" type="behaviortree_node" args="$(arg package)" output="screen"/>
+</launch>
