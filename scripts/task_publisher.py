@@ -110,15 +110,14 @@ class Publisher:
 
     def prompt(self):
         m = map(str, range(1, len(self.poses)+1))
-        message = f"""
-                Available for selection {', '.join(m)}\n
-                For example, to select pose 1, 2, 3 and 4, type: 1234
-                Type just '0' to create an empty PoseTimeArray: 0 
-                Note that:
-                    1. There is not space in the input.
-                    2. Your selection should be within the specified ranges.
-                    3. The order of your selection is maintained.\n
-                """
+        message = (f"\n"
+                   f"Available for selection {', '.join(m)}\n\n"
+                   f"For example, to select pose 1, 2, 3 and 4, type: 1234\n"
+                   f"Type just '0' to create an empty PoseTimeArray: 0 \n"
+                   f"Note that:\n"
+                   f"   1. There is not space in the input.\n"
+                   f"   2. Your selection should be within the specified ranges.\n"
+                   f"   3. The order of your selection is maintained.\n\n")
         rospy.loginfo(message)
 
 
